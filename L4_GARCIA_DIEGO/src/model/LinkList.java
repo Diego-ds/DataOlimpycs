@@ -1,11 +1,43 @@
 package model;
 
 public class LinkList {
-		private long number;
+
+	    private LinkList prev = null;
+	    private LinkList next = null;
+	    private long number;
+
+	    public LinkList(long n) {
+	        number = n;
+	    }
+
+	    public Long getNumber() {
+	        return number;
+	    }
+
+	    public LinkList getPrev() {
+	        return prev;
+	    }
+
+	    public LinkList getNext() {
+	        return next;
+	    }
+
+	    public void setPrev(LinkList p) {
+	        prev = p;
+	    }
+
+	    public void setNext(LinkList n) {
+	        next = n;
+	    }
+
+	}
+		/*private long number;
 		private LinkList next;
 		private LinkList prev;
 		public LinkList(long number) {
 			this.number = number;
+			next=null;
+			prev=null;
 		}
 		public LinkList getNext() {
 			return next;
@@ -21,7 +53,7 @@ public class LinkList {
 		}
 		public long getNumber() {
 			return number;
-		}
+		}*/
 		
 		
-}
+

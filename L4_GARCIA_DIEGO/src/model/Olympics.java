@@ -69,4 +69,136 @@ public class Olympics {
 			addLinkedListRecursive(cur.getNext(),toAdd);
 		}
 	}
+	
+	public void addBinaryTreeIterative(BinaryTree toAdd) {
+		if(p==null) {
+			p=toAdd;
+		}else {
+			BinaryTree current = p;
+			boolean val = false;
+			while(current!=null & !val) {
+				if(toAdd.getNumber()>current.getNumber()) {
+					if(current.getRight()==null) {
+						current.setRight(toAdd);
+						toAdd.setP(current);
+						val=true;
+					}else {
+						current=current.getRight();
+					}
+				}else if(toAdd.getNumber()<=current.getNumber()) {
+					if(current.getLeft()==null) {
+						current.setLeft(toAdd);
+						toAdd.setP(current);
+						val=true;
+					}else {
+						current=current.getLeft();
+					}
+				}
+			}
+		}
+	}
+	
+	public void addBinaryTreeRecursive(BinaryTree current,BinaryTree toAdd) {
+		if(toAdd.getNumber()>current.getNumber()) {
+			if(current.getRight()==null) {
+				current.setRight(toAdd);
+				toAdd.setP(current);
+			}else {
+				addBinaryTreeRecursive(current.getRight(),toAdd);
+			}
+		
+		}else if(toAdd.getNumber()<=current.getNumber()) {
+			if(current.getLeft()==null) {
+				current.setLeft(toAdd);
+				toAdd.setP(current);
+			}else {
+				addBinaryTreeRecursive(current.getLeft(),toAdd);
+			}
+		}
+	}
+	
+	public void deleteLinkedListIterative(long num) {
+		if(first!=null) {
+			LinkList current = first;
+			boolean val = false;
+			while(current!=null && !val) {
+				if(current.getNumber()==num) {
+					if(current == first) {
+						LinkList next = current.getNext();
+						next.setPrev(null);
+						first=next;
+						val=true;
+					}else if(current.getNext()==null) {
+						LinkList prev = current.getPrev();
+						prev.setNext(null);
+						val=true;
+					}else {
+						LinkList prev = current.getPrev();
+						LinkList next = current.getNext();
+						prev.setNext(next);
+						next.setPrev(prev);
+						val=true;
+					}
+				}else {
+					current=current.getNext();
+				}
+			}
+		}
+	}
+	
+	public void deleteLinkedListRecursive(LinkList current,long num) {
+		
+		if(current.getNumber()==num) {
+			if(current == first) {
+				LinkList next = current.getNext();
+				next.setPrev(null);
+				first=next;
+			}else if(current.getNext()==null) {
+				LinkList prev = current.getPrev();
+				prev.setNext(null);
+			}else {
+				LinkList prev = current.getPrev();
+				LinkList next = current.getNext();
+				prev.setNext(next);
+				next.setPrev(prev);
+			}
+		}else {
+			deleteLinkedListRecursive(current.getNext(),num);
+		}
+	}
+	
+	public boolean searchLinkedListIterative(long num){
+		boolean val = false;
+		if(first!=null) {
+			LinkList current =first;
+			boolean flag = false;
+			while(current!=null && !flag) {
+				if(current.getNumber()==num) {
+					//System.out.println("3rfew");
+					flag=true;
+					val=flag;
+				}
+					current=current.getNext();
+					System.out.println(current.getNumber());
+		
+			}
+		}
+		return val;
+		
+	}
+	
+	public boolean searchLinkedListRecursive(LinkList current,long num) {
+		boolean val = false;
+		if(current!=null) {
+			System.out.println("primer if");
+			if(current.getNumber()==num) {
+				System.out.println("segundo");
+
+				val=true;
+			}else {
+				searchLinkedListRecursive(current.getNext(),num);
+			}
+		}
+		return val;
+	}
 }
