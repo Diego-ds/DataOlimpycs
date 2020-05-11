@@ -2,12 +2,14 @@ package model;
 
 public class LinkList {
 
-	    private LinkList prev = null;
-	    private LinkList next = null;
+	    private LinkList prev;
+	    private LinkList next ;
 	    private long number;
 
 	    public LinkList(long n) {
 	        number = n;
+	        prev=null;
+	        next=null;
 	    }
 
 	    public Long getNumber() {
