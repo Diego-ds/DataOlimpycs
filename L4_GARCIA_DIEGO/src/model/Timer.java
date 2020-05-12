@@ -54,7 +54,14 @@ public class Timer {
 	public void setRunTime(boolean runTime) {
 		this.runTime = runTime;
 	}
-	
+	public void clearClock() {
+	min = 0;
+	seg = 0; 
+	mseg = 0;
+	minutos = "";
+	segundos = "";
+	milesimas = "";
+	}
 	
 	
 	

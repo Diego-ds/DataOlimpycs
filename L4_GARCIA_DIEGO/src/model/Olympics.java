@@ -12,7 +12,7 @@ public class Olympics {
 		this.p = null;
 		this.aList = new ArrayList <Long>();
 	}
-	//getters
+	//getters setters
 	public LinkList getFirst() {
 		return first;
 	}
@@ -27,6 +27,8 @@ public class Olympics {
 	public void setRunTime(boolean runTime) {
 		this.runTime = runTime;
 	}
+	
+	
 	//methods
 	public void addArrayList(long n) {
 		aList.add(n);
@@ -57,8 +59,13 @@ public class Olympics {
 			aList.remove(index);
 			return true;
 		}else {
-			return deleteArrayListRecursive(n,index+1);
+			try{
+				return deleteArrayListRecursive(n,index+1);
+			}catch(StackOverflowError e) {
+				
+			}
 		}
+		return false;
 	}
 	public void deleteArrayList(long n) {
 		boolean val=false;
@@ -93,7 +100,11 @@ public class Olympics {
 			cur.setNext(toAdd);
 			toAdd.setPrev(cur);
 		}else {
-			addLinkedListRecursive(cur.getNext(),toAdd);
+			try{
+				addLinkedListRecursive(cur.getNext(),toAdd);
+			}catch(StackOverflowError e) {
+				
+			}
 		}
 	}
 	
@@ -195,7 +206,12 @@ public class Olympics {
 				next.setPrev(prev);
 			}
 		}else {
-			deleteLinkedListRecursive(current.getNext(),num);
+			try {
+				deleteLinkedListRecursive(current.getNext(),num);
+			}catch(StackOverflowError e) {
+				
+			}
+			
 		}
 	}
 	
@@ -222,7 +238,12 @@ public class Olympics {
 			if(current.getNumber()==num) {
 				return true;
 			}else {
-				return searchLinkedListRecursive(current.getNext(),num);
+				try {
+					return searchLinkedListRecursive(current.getNext(),num);
+				}catch(StackOverflowError e) {
+					
+				}
+				
 			}
 		}
 		return false;
@@ -375,6 +396,11 @@ public class Olympics {
 			}
 		}
 		return false;	
+	}
+	public void restartStructures() {
+		this.p=null;
+		this.first=null;
+		this.aList.clear();
 	}
 	
 	

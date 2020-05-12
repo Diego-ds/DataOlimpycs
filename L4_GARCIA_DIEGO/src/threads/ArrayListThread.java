@@ -35,6 +35,7 @@ public class ArrayListThread extends Thread {
 					@Override
 					public void run() {
 						gui.setArrayListTime();	
+						gui.setArrayFinish(true);
 					}
 					
 				});
@@ -47,6 +48,7 @@ public class ArrayListThread extends Thread {
 					@Override
 					public void run() {
 						gui.setArrayListTime();
+						gui.setArrayFinish(true);
 					}
 					
 				});
@@ -63,6 +65,7 @@ public class ArrayListThread extends Thread {
 					@Override
 					public void run() {
 						gui.setArrayListTime();
+						gui.setArrayFinish(true);
 					}
 					
 				});
@@ -76,6 +79,7 @@ public class ArrayListThread extends Thread {
 					@Override
 					public void run() {
 						gui.setArrayListTime();
+						gui.setArrayFinish(true);
 					}
 					
 				});
@@ -92,6 +96,7 @@ public class ArrayListThread extends Thread {
 					@Override
 					public void run() {
 						gui.setArrayListTime();
+						gui.setArrayFinish(true);
 					}
 					
 				});
@@ -104,6 +109,7 @@ public class ArrayListThread extends Thread {
 					@Override
 					public void run() {
 						gui.setArrayListTime();
+						gui.setArrayFinish(true);
 					}
 					
 				});

@@ -19,7 +19,7 @@ public class TimerThread extends Thread {
 		while(timer.isRunTime()) {
 			time=timer.advanceTime();
 			try {
-				Thread.sleep(4);
+				Thread.sleep(5);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

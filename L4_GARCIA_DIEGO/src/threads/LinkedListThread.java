@@ -32,11 +32,12 @@ public class LinkedListThread extends Thread {
 						LinkList toAdd = new LinkList(generator.nextLong());
 						olympics.addLinkedListIterative(toAdd);
 						i++;
-					}
+					}	
 					Platform.runLater(new Runnable() {
 						@Override
 						public void run() {
 							gui.setLinkListTime();	
+							gui.setListFinish(true);
 						}
 						
 					});
@@ -46,10 +47,12 @@ public class LinkedListThread extends Thread {
 						olympics.addLinkedListRecursive(olympics.getFirst(), toAdd);
 						i++;
 					}
+					
 					Platform.runLater(new Runnable() {
 						@Override
 						public void run() {
 							gui.setLinkListTime();	
+							gui.setListFinish(true);
 						}
 						
 					});
@@ -58,7 +61,6 @@ public class LinkedListThread extends Thread {
 			case 1:
 				if(type==0) {
 					while(i<num) {
-						
 						olympics.deleteLinkedListIterative(generator.nextLong());
 						i++;
 					}
@@ -66,6 +68,7 @@ public class LinkedListThread extends Thread {
 						@Override
 						public void run() {
 							gui.setLinkListTime();	
+							gui.setListFinish(true);
 						}
 						
 					});
@@ -78,7 +81,8 @@ public class LinkedListThread extends Thread {
 					Platform.runLater(new Runnable() {
 						@Override
 						public void run() {
-							gui.setLinkListTime();	
+							gui.setLinkListTime();
+							gui.setListFinish(true);
 						}
 						
 					});
@@ -95,6 +99,7 @@ public class LinkedListThread extends Thread {
 						@Override
 						public void run() {
 							gui.setLinkListTime();	
+							gui.setListFinish(true);
 						}
 						
 					});
@@ -107,6 +112,7 @@ public class LinkedListThread extends Thread {
 						@Override
 						public void run() {
 							gui.setLinkListTime();	
+							gui.setListFinish(true);
 						}
 						
 					});
