@@ -6,6 +6,7 @@ public class Olympics {
 	private LinkList first;
 	private BinaryTree p;
 	private ArrayList <Long> aList;
+	private boolean runTime;
 	public Olympics() {
 		this.first = null;
 		this.p = null;
@@ -19,7 +20,13 @@ public class Olympics {
 	public BinaryTree getP() {
 		return p;
 	}
-
+	
+	public boolean isRunTime() {
+		return runTime;
+	}
+	public void setRunTime(boolean runTime) {
+		this.runTime = runTime;
+	}
 	//methods
 	public void addArrayList(long n) {
 		aList.add(n);
@@ -33,6 +40,26 @@ public class Olympics {
 		}
 	}
 	
+	public boolean searchArrayListRecursive(long n,int index) {
+		if(index>=aList.size()) {
+			return false;
+		}else if(aList.get(index)==n) {
+			return true;
+		}else {
+			return searchArrayListRecursive(n,index+1);
+		}
+	}
+	
+	public boolean deleteArrayListRecursive(long n,int index) {
+		if(index>=aList.size()) {
+			return false;
+		}else if(aList.get(index)==n) {
+			aList.remove(index);
+			return true;
+		}else {
+			return deleteArrayListRecursive(n,index+1);
+		}
+	}
 	public void deleteArrayList(long n) {
 		boolean val=false;
 		for(int i =0;i<aList.size() && !val;i++) {
@@ -349,4 +376,8 @@ public class Olympics {
 		}
 		return false;	
 	}
+	
+	
+	
+	
 }
