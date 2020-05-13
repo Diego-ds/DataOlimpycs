@@ -37,7 +37,7 @@ public class LinkedListThread extends Thread {
 						@Override
 						public void run() {
 							gui.setLinkListTime();	
-							gui.setListFinish(true);
+							//gui.setListFinish(true);
 						}
 						
 					});
@@ -52,7 +52,7 @@ public class LinkedListThread extends Thread {
 						@Override
 						public void run() {
 							gui.setLinkListTime();	
-							gui.setListFinish(true);
+							//gui.setListFinish(true);
 						}
 						
 					});
@@ -68,7 +68,7 @@ public class LinkedListThread extends Thread {
 						@Override
 						public void run() {
 							gui.setLinkListTime();	
-							gui.setListFinish(true);
+							//gui.setListFinish(true);
 						}
 						
 					});
@@ -82,7 +82,7 @@ public class LinkedListThread extends Thread {
 						@Override
 						public void run() {
 							gui.setLinkListTime();
-							gui.setListFinish(true);
+							//gui.setListFinish(true);
 						}
 						
 					});
@@ -99,7 +99,7 @@ public class LinkedListThread extends Thread {
 						@Override
 						public void run() {
 							gui.setLinkListTime();	
-							gui.setListFinish(true);
+							//gui.setListFinish(true);
 						}
 						
 					});
@@ -112,7 +112,7 @@ public class LinkedListThread extends Thread {
 						@Override
 						public void run() {
 							gui.setLinkListTime();	
-							gui.setListFinish(true);
+							//gui.setListFinish(true);
 						}
 						
 					});

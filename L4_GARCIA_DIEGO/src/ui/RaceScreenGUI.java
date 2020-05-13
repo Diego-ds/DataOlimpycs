@@ -1,29 +1,30 @@
 package ui;
 
-
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.shape.Circle;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import model.CircleManage;
 import model.Olympics;
 import model.Timer;
 import threads.ArrayListThread;
 import threads.BinaryTreeThread;
+import threads.CirclesThread;
 import threads.LinkedListThread;
 import threads.TimerThread;
 
 public class RaceScreenGUI {
-	
+	private ArrayListThread arrayThread;
+	private BinaryTreeThread treeThread;
+	private LinkedListThread listThread;
 	private Timer timer;
+	private CircleManage circleManager;
 	private Olympics olympics;
-	private boolean listFinish;
-	private boolean arrayFinish;
-	private boolean treeFinish;
     @FXML
     private TextField numberField;
 
@@ -59,25 +60,39 @@ public class RaceScreenGUI {
 
     @FXML
     private Label treeTime;
+
+    @FXML
+    private Circle circle2;
+
+    @FXML
+    private Circle circle1;
+    
     
     public RaceScreenGUI() {
     	olympics=new Olympics();
     	timer = new Timer();
-    	this.listFinish=false;
-		this.arrayFinish=false;
-		this.treeFinish=false;
+    	circleManager = new CircleManage();
+    	
 		
     }
- 
+    
+    @FXML
+    public void initialize() {
+    	circleManager.addCircle(circle1.getRadius());
+    	circleManager.addCircle(circle2.getRadius());
+    }
 	@FXML
-	void startRace(ActionEvent event) {
+	public void startRace(ActionEvent event) {
 		//reset all before the race
 		clearTimers();
 		timer.clearClock();
 		olympics.restartStructures();
 		//
+		circleManager.setMovement(true);
 		timer.setRunTime(true);
+		//time and circles thread
 		TimerThread time = new TimerThread(this, timer);
+		CirclesThread circles = new CirclesThread(this,circleManager);
 		Long seed = System.currentTimeMillis();
 		int num=0;;
 		try{
@@ -91,19 +106,21 @@ public class RaceScreenGUI {
 		}
 		if (iterativeBut.isSelected()) {
 			if (addBut.isSelected()) {
-				ArrayListThread a = new ArrayListThread(olympics, seed, 0, 0, num, this);
-				BinaryTreeThread b = new BinaryTreeThread(olympics, seed, 0, 0, num, this);
-				LinkedListThread l = new LinkedListThread(olympics, seed, 0, 0, num, this);
-
+				 arrayThread = new ArrayListThread(olympics, seed, 0, 0, num, this);
+				 treeThread = new BinaryTreeThread(olympics, seed, 0, 0, num, this);
+				 listThread = new LinkedListThread(olympics, seed, 0, 0, num, this);
+				
+				circles.start();
 				time.start();
-				a.start();
-				b.start();
-				l.start();
-
+				arrayThread.start();
+				treeThread.start();
+				listThread.start();
+				
+				
 			} else if (deleteBut.isSelected()) {
-				ArrayListThread a = new ArrayListThread(olympics, seed, 1, 0, num, this);
-				BinaryTreeThread b = new BinaryTreeThread(olympics, seed, 1, 0, num, this);
-				LinkedListThread l = new LinkedListThread(olympics, seed, 1, 0, num, this);
+				arrayThread = new ArrayListThread(olympics, seed, 1, 0, num, this);
+				treeThread = new BinaryTreeThread(olympics, seed, 1, 0, num, this);
+				listThread = new LinkedListThread(olympics, seed, 1, 0, num, this);
 				// change the seed
 				seed = System.currentTimeMillis();
 
@@ -122,17 +139,19 @@ public class RaceScreenGUI {
 				} catch (InterruptedException e1) {
 					e1.printStackTrace();
 				}
-
+				
+				circles.start();
 				time.start();
-				a.start();
-				b.start();
-				l.start();
+				arrayThread.start();
+				treeThread.start();
+				listThread.start();
+				
 
 			
 			} else if (searchBut.isSelected()) {
-				ArrayListThread a = new ArrayListThread(olympics, seed, 2, 0, num, this);
-				BinaryTreeThread b = new BinaryTreeThread(olympics, seed, 2, 0, num, this);
-				LinkedListThread l = new LinkedListThread(olympics, seed, 2, 0, num, this);
+				arrayThread = new ArrayListThread(olympics, seed, 2, 0, num, this);
+				treeThread = new BinaryTreeThread(olympics, seed, 2, 0, num, this);
+				listThread = new LinkedListThread(olympics, seed, 2, 0, num, this);
 				// change the seed
 				seed = System.currentTimeMillis();
 				ArrayListThread add1 = new ArrayListThread(olympics, seed, 0, 0, num, this);
@@ -150,11 +169,13 @@ public class RaceScreenGUI {
 				} catch (InterruptedException e1) {
 					e1.printStackTrace();
 				}
-
+				
+				circles.start();
 				time.start();
-				a.start();
-				b.start();
-				l.start();
+				arrayThread.start();
+				treeThread.start();
+				listThread.start();
+				
 
 				}else if(!searchBut.isSelected() && !deleteBut.isSelected() && !addBut.isSelected()){
 					Alert alert = new Alert(AlertType.WARNING);
@@ -165,17 +186,17 @@ public class RaceScreenGUI {
 				}
 			} else if (recursiveBut.isSelected()) {
 				if (addBut.isSelected()) {
-					ArrayListThread a = new ArrayListThread(olympics, seed, 0, 1, num, this);
-					BinaryTreeThread b = new BinaryTreeThread(olympics, seed, 0, 1, num, this);
-					LinkedListThread l = new LinkedListThread(olympics, seed, 0, 1, num, this);
+					arrayThread = new ArrayListThread(olympics, seed, 0, 1, num, this);
+					treeThread = new BinaryTreeThread(olympics, seed, 0, 1, num, this);
+					listThread= new LinkedListThread(olympics, seed, 0, 1, num, this);
 					time.start();
-					a.start();
-					b.start();
-					l.start();
+					arrayThread.start();
+					treeThread.start();
+					listThread.start();
 				} else if (deleteBut.isSelected()) {
-					ArrayListThread a = new ArrayListThread(olympics, seed, 1, 1, num, this);
-					BinaryTreeThread b = new BinaryTreeThread(olympics, seed, 1, 1, num, this);
-					LinkedListThread l = new LinkedListThread(olympics, seed, 1, 1, num, this);
+					arrayThread = new ArrayListThread(olympics, seed, 1, 1, num, this);
+					treeThread = new BinaryTreeThread(olympics, seed, 1, 1, num, this);
+					listThread  = new LinkedListThread(olympics, seed, 1, 1, num, this);
 					// change the seed
 					seed = System.currentTimeMillis();
 
@@ -195,15 +216,18 @@ public class RaceScreenGUI {
 						e1.printStackTrace();
 					}
 
+					circles.start();
 					time.start();
-					a.start();
-					b.start();
-					l.start();
+					arrayThread.start();
+					treeThread.start();
+					listThread.start();
+					
+	
 
 				} else if (searchBut.isSelected()) {
-					ArrayListThread a = new ArrayListThread(olympics, seed, 2, 1, num, this);
-					BinaryTreeThread b = new BinaryTreeThread(olympics, seed, 2, 1, num, this);
-					LinkedListThread l = new LinkedListThread(olympics, seed, 2, 1, num, this);
+					arrayThread = new ArrayListThread(olympics, seed, 2, 1, num, this);
+					treeThread = new BinaryTreeThread(olympics, seed, 2, 1, num, this);
+					listThread = new LinkedListThread(olympics, seed, 2, 1, num, this);
 					// change the seed
 					seed = System.currentTimeMillis();
 
@@ -222,10 +246,13 @@ public class RaceScreenGUI {
 					} catch (InterruptedException e1) {
 						e1.printStackTrace();
 					}
+					
+					circles.start();
 					time.start();
-					a.start();
-					b.start();
-					l.start();
+					arrayThread.start();
+					treeThread.start();
+					listThread.start();
+					
 				}else if (!searchBut.isSelected() && !deleteBut.isSelected() && !addBut.isSelected()){
 					Alert alert = new Alert(AlertType.WARNING);
 					alert.setTitle("Error");
@@ -269,35 +296,31 @@ public class RaceScreenGUI {
     	ArrayTime.setText(time);
     }
     @FXML
-    public boolean isListFinish() {
-		return listFinish;
-	}
-    @FXML
-	public void setListFinish(boolean listFinish) {
-		this.listFinish = listFinish;
-	}
-    @FXML
-	public boolean isArrayFinish() {
-		return arrayFinish;
-	}
-    @FXML
-	public void setArrayFinish(boolean arrayFinish) {
-		this.arrayFinish = arrayFinish;
-	}
-    @FXML
-	public boolean isTreeFinish() {
-		return treeFinish;
-	}
-    @FXML
-	public void setTreeFinish(boolean treeFinish) {
-		this.treeFinish = treeFinish;
-	}
-    @FXML
     public void clearTimers() {
     	ArrayTime.setText("00:00:000");
     	listTime.setText("00:00:000");
     	treeTime.setText("00:00:000");
     }
+    public void updateCircles() {
+    	circle1.setRadius(circleManager.getCircles().get(0).getRadius());
+    	circle2.setRadius(circleManager.getCircles().get(1).getRadius());
+    }
+    public void moveCircles() {
+    	circleManager.increaseCircle();
+    }
+
+	public ArrayListThread getArrayThread() {
+		return arrayThread;
+	}
+
+	public BinaryTreeThread getTreeThread() {
+		return treeThread;
+	}
+
+	public LinkedListThread getListThread() {
+		return listThread;
+	}
+    
     
 }
 

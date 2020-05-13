@@ -35,7 +35,7 @@ public class ArrayListThread extends Thread {
 					@Override
 					public void run() {
 						gui.setArrayListTime();	
-						gui.setArrayFinish(true);
+						//gui.setArrayFinish(true);
 					}
 					
 				});
@@ -48,7 +48,7 @@ public class ArrayListThread extends Thread {
 					@Override
 					public void run() {
 						gui.setArrayListTime();
-						gui.setArrayFinish(true);
+						//gui.setArrayFinish(true);
 					}
 					
 				});
@@ -65,7 +65,7 @@ public class ArrayListThread extends Thread {
 					@Override
 					public void run() {
 						gui.setArrayListTime();
-						gui.setArrayFinish(true);
+						//gui.setArrayFinish(true);
 					}
 					
 				});
@@ -79,7 +79,7 @@ public class ArrayListThread extends Thread {
 					@Override
 					public void run() {
 						gui.setArrayListTime();
-						gui.setArrayFinish(true);
+						//gui.setArrayFinish(true);
 					}
 					
 				});
@@ -88,7 +88,6 @@ public class ArrayListThread extends Thread {
 		case 2:
 			if(type==0) {
 				while(i<num) {
-					
 					olympics.searchArrayList(generator.nextLong());
 					i++;
 				}
@@ -96,7 +95,7 @@ public class ArrayListThread extends Thread {
 					@Override
 					public void run() {
 						gui.setArrayListTime();
-						gui.setArrayFinish(true);
+						//gui.setArrayFinish(true);
 					}
 					
 				});
@@ -109,7 +108,7 @@ public class ArrayListThread extends Thread {
 					@Override
 					public void run() {
 						gui.setArrayListTime();
-						gui.setArrayFinish(true);
+						//gui.setArrayFinish(true);
 					}
 					
 				});

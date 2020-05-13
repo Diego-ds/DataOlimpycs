@@ -36,9 +36,11 @@ public class Olympics {
 	public void searchArrayList(long n) {
 		boolean val=false;
 		for(int i =0;i<aList.size() && !val;i++) {
-			if(aList.get(i)==n) {
-				val=true;
-			}
+			if(aList.get(i)!=null) {
+				if(aList.get(i)==n) {
+					val=true;
+				}
+			}			
 		}
 	}
 	
@@ -167,10 +169,15 @@ public class Olympics {
 			while(current!=null && !val) {
 				if(current.getNumber()==num) {
 					if(current == first) {
-						LinkList next = current.getNext();
-						next.setPrev(null);
-						first=next;
-						val=true;
+						if(current.getNext()!=null) {
+							LinkList next = current.getNext();
+							next.setPrev(null);
+							first=next;
+							val=true;
+						}else {
+							first=null;
+							val=true;
+						}
 					}else if(current.getNext()==null) {
 						LinkList prev = current.getPrev();
 						prev.setNext(null);
@@ -193,9 +200,13 @@ public class Olympics {
 		
 		if(current.getNumber()==num) {
 			if(current == first) {
-				LinkList next = current.getNext();
-				next.setPrev(null);
-				first=next;
+				if(current.getNext()!=null) {
+					LinkList next = current.getNext();
+					next.setPrev(null);
+					first=next;
+				}else {
+					first=null;
+				}	
 			}else if(current.getNext()==null) {
 				LinkList prev = current.getPrev();
 				prev.setNext(null);
@@ -281,8 +292,13 @@ public class Olympics {
 		if(root.getLeft()==null) {
 			return root;
 		}else {
-			return minimunValue(root.getLeft());
+			try{
+				return minimunValue(root.getLeft());
+			}catch(StackOverflowError e) {
+				
+			}
 		}
+		return root;
 	}
 	
 	public boolean deleteBinaryTreeRecursive(BinaryTree root,long num) {
@@ -290,9 +306,17 @@ public class Olympics {
 			return false;
 		}
 		if(root.getNumber()<num) {
-			return deleteBinaryTreeRecursive(root.getRight(),num);
+			try{
+				return deleteBinaryTreeRecursive(root.getRight(),num);
+			}catch(StackOverflowError e) {
+				
+			}
 		}else if(root.getNumber()>num) {
-			return deleteBinaryTreeRecursive(root.getLeft(),num);
+			try{
+				return deleteBinaryTreeRecursive(root.getLeft(),num);
+			}catch(StackOverflowError e) {
+				
+			}
 		}else {
 			if(root.getLeft()!=null && root.getRight()!=null) {
 				return deleteTreeTwoSons(root);	
@@ -304,6 +328,7 @@ public class Olympics {
 				return deleteTreeNoSons(root);
 			}
 		}
+		return false;
 		
 	}
 	
@@ -340,8 +365,12 @@ public class Olympics {
 				}else if(pop.getRight()==root) {
 					pop.setRight(temp);
 				}
-				root.getLeft().setP(temp);
-				root.getRight().setP(temp);
+				if(root.getLeft()!=null ) {
+					root.getLeft().setP(temp);
+				}
+				if(root.getRight()!=null) {
+					root.getRight().setP(temp);
+				}
 				root=temp;
 				return true;
 			}

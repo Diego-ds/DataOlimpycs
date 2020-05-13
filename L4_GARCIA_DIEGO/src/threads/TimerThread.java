@@ -19,7 +19,7 @@ public class TimerThread extends Thread {
 		while(timer.isRunTime()) {
 			time=timer.advanceTime();
 			try {
-				Thread.sleep(5);
+				Thread.sleep(6);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -28,6 +28,9 @@ public class TimerThread extends Thread {
 				@Override
 				public void run() {	
 					gui.setLabel(time);
+					if(!gui.getArrayThread().isAlive() && !gui.getTreeThread().isAlive() && !gui.getListThread().isAlive()) {
+						timer.setRunTime(false);
+					}
 				}
 			});
 		}

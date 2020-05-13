@@ -9,6 +9,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="302.0" prefWidth="737.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.RaceScreenGUI">
@@ -181,5 +182,7 @@
       <Separator layoutX="345.0" layoutY="110.0" prefHeight="3.0" prefWidth="364.0" />
       <Separator layoutX="707.0" layoutY="8.0" orientation="VERTICAL" prefHeight="104.0" prefWidth="6.0" />
       <Separator layoutX="341.0" layoutY="6.0" prefHeight="3.0" prefWidth="364.0" />
+      <Circle fx:id="circle2" fill="#1e00ff85" layoutX="654.0" layoutY="59.0" radius="40.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="circle1" fill="#e1ff0095" layoutX="654.0" layoutY="60.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
    </children>
 </AnchorPane>

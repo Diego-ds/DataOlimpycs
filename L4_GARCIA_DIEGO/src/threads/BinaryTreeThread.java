@@ -37,7 +37,7 @@ public class BinaryTreeThread extends Thread {
 					@Override
 					public void run() {
 						gui.setBinaryTreeTime();
-						gui.setTreeFinish(true);
+						//gui.setTreeFinish(true);
 					}
 					
 				});
@@ -51,7 +51,7 @@ public class BinaryTreeThread extends Thread {
 					@Override
 					public void run() {
 						gui.setBinaryTreeTime();
-						gui.setTreeFinish(true);
+						//gui.setTreeFinish(true);
 					}
 					
 				});
@@ -68,7 +68,7 @@ public class BinaryTreeThread extends Thread {
 					@Override
 					public void run() {
 						gui.setBinaryTreeTime();
-						gui.setTreeFinish(true);
+						//gui.setTreeFinish(true);
 					}
 					
 				});
@@ -82,7 +82,7 @@ public class BinaryTreeThread extends Thread {
 					@Override
 					public void run() {
 						gui.setBinaryTreeTime();
-						gui.setTreeFinish(true);
+						//gui.setTreeFinish(true);
 					}
 					
 				});
@@ -99,7 +99,7 @@ public class BinaryTreeThread extends Thread {
 					@Override
 					public void run() {
 						gui.setBinaryTreeTime();
-						gui.setTreeFinish(true);
+						//gui.setTreeFinish(true);
 					}
 					
 				});
@@ -112,7 +112,7 @@ public class BinaryTreeThread extends Thread {
 					@Override
 					public void run() {
 						gui.setBinaryTreeTime();
-						gui.setTreeFinish(true);
+						//gui.setTreeFinish(true);
 					}
 					
 				});
