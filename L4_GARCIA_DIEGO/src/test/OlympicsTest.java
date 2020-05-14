@@ -28,8 +28,16 @@ public class OlympicsTest {
 		control.addLinkedListIterative(l2);
 		control.addLinkedListIterative(l3);
 		control.addLinkedListIterative(l4);*/
-		
-
+	}
+	public void setup4() {
+		LinkList l1 = new LinkList(5);
+		LinkList l2 = new LinkList(7);
+		LinkList l3 = new LinkList(9);
+		LinkList l4 = new LinkList(11);	
+		control.addLinkedListIterative(l1);
+		control.addLinkedListIterative(l2);
+		control.addLinkedListIterative(l3);
+		control.addLinkedListIterative(l4);
 	}
 	
 	public void setup2() {
@@ -40,11 +48,6 @@ public class OlympicsTest {
 		BinaryTree t5 = new BinaryTree(14);
 		BinaryTree t6 = new BinaryTree(4);
 		BinaryTree t7 = new BinaryTree(8);
-		/*control.addBinaryTreeRecursive(control.getP(), t1);
-		control.addBinaryTreeRecursive(control.getP(), t2);
-		control.addBinaryTreeRecursive(control.getP(), t3);
-		control.addBinaryTreeRecursive(control.getP(), t4);
-		control.addBinaryTreeRecursive(control.getP(), t5);*/
 		control.addBinaryTreeIterative(t1);
 		control.addBinaryTreeIterative(t2);
 		control.addBinaryTreeIterative(t3);
@@ -55,9 +58,40 @@ public class OlympicsTest {
 		
 	}
 	
+	public void setup3() {
+		BinaryTree t1 = new BinaryTree(10);
+		BinaryTree t2 = new BinaryTree(6);
+		BinaryTree t3 = new BinaryTree(13);
+		BinaryTree t4 = new BinaryTree(11);
+		BinaryTree t5 = new BinaryTree(14);
+		BinaryTree t6 = new BinaryTree(4);
+		BinaryTree t7 = new BinaryTree(8);
+		control.addBinaryTreeRecursive(control.getP(), t1);
+		control.addBinaryTreeRecursive(control.getP(), t2);
+		control.addBinaryTreeRecursive(control.getP(), t3);
+		control.addBinaryTreeRecursive(control.getP(), t4);
+		control.addBinaryTreeRecursive(control.getP(), t5);
+		control.addBinaryTreeRecursive(control.getP(), t6);
+		control.addBinaryTreeRecursive(control.getP(), t7);
+		
+	}
 	@Test
 	public void addLinkedListRecursiveTest () {
 		setup1();
+		LinkList current = control.getFirst();
+		assertTrue(current.getNumber()==5);
+		current=current.getNext();
+		assertTrue(current.getNumber()==7);
+		current=current.getNext();
+		assertTrue(current.getNumber()==9);
+		current=current.getNext();
+		assertTrue(current.getNumber()==11);
+		current=current.getNext();
+		
+	}
+	@Test
+	public void addLinkedListIterativeTest () {
+		setup4();
 		LinkList current = control.getFirst();
 		assertTrue(current.getNumber()==5);
 		current=current.getNext();
@@ -122,8 +156,37 @@ public class OlympicsTest {
 	}
 	
 	@Test
-	public void addBinaryTreeTest() {
+	public void addBinaryTreeIterativeTest() {
 		setup2();
+		BinaryTree current = control.getP();
+		BinaryTree currentLeft=current.getLeft();
+		BinaryTree currentRight =current.getRight();
+		assertTrue(current.getNumber()==10);
+		assertTrue(currentLeft.getNumber()==6);
+		assertTrue(currentRight.getNumber()==13);
+		BinaryTree currentLeftL = currentLeft.getLeft();
+		assertTrue(currentLeftL.getNumber()==4);
+		currentLeft = currentLeft.getRight();
+		assertTrue(currentLeft.getNumber()==8);
+		BinaryTree currentRightR = currentRight.getRight();
+		assertTrue(currentRightR.getNumber()==14);
+		currentRight=currentRight.getLeft();
+		assertTrue(currentRight.getNumber()==11);
+		currentRight=currentRight.getLeft();
+		assertTrue(currentRight==null);
+		currentRightR=currentRightR.getLeft();
+		assertTrue(currentRightR==null);
+		currentLeft = currentLeft.getRight();
+		assertTrue(currentLeft==null);
+		currentLeftL = currentLeftL.getLeft();
+		assertTrue(currentLeftL==null);
+		
+
+	}
+	
+	@Test
+	public void addBinaryTreeRecursiveTest() {
+		setup3();
 		BinaryTree current = control.getP();
 		BinaryTree currentLeft=current.getLeft();
 		BinaryTree currentRight =current.getRight();
